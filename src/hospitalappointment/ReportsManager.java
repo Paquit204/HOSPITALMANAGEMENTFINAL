@@ -60,6 +60,7 @@ public class ReportsManager {
     }
 
     private void individualPatientReport() {
+         PatientManager.viewPatients();  
     System.out.print("Enter patient ID for report: ");
     int patientId = getValidIntegerInput(); 
 
@@ -79,6 +80,7 @@ public class ReportsManager {
 }
 
     private void individualAppointmentReport() {
+        DoctorManager.viewDoctors(); 
         System.out.print("Enter appointment ID for report: ");
         int appointmentId = getValidIntegerInput(); 
         String sql = "SELECT a.id, p.name AS patient_name, d.name AS doctor_name, a.appointment_date, a.appointment_type, a.status " +
