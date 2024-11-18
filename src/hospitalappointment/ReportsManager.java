@@ -60,13 +60,23 @@ public class ReportsManager {
     }
 
     private void individualPatientReport() {
-        System.out.print("Enter patient ID for report: ");
-        int patientId = getValidIntegerInput(); 
-        String sql = "SELECT * FROM patients WHERE id = ?";
-        String[] headers = {"ID", "Name", "Age", "Gender"};
-        String[] columnNames = {"id", "name", "age", "gender"};
-        dbConfig.viewRecords(sql, headers, columnNames, patientId);
-    }
+    System.out.print("Enter patient ID for report: ");
+    int patientId = getValidIntegerInput(); 
+
+    
+    String sql = "SELECT p.id, p.name, p.age, p.gender, a.appointment_date, a.appointment_type, a.status " +
+                 "FROM patients p " +
+                 "LEFT JOIN appointments a ON p.id = a.patient_id " +
+                 "WHERE p.id = ?";
+
+    
+    String[] headers = {"Patient ID", "Name", "Age", "Gender", "Appointment Date", "Appointment Type", "Status"};
+    // Corresponding column names in the result set
+    String[] columnNames = {"id", "name", "age", "gender", "appointment_date", "appointment_type", "status"};
+    
+    
+    dbConfig.viewRecords(sql, headers, columnNames, patientId);
+}
 
     private void individualAppointmentReport() {
         System.out.print("Enter appointment ID for report: ");
