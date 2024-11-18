@@ -19,10 +19,14 @@ public class AppointmentManager {
                     viewAppointments();
                     break;
                 case 3:
+                    viewAppointments();
                     updateAppointment();
+                    viewAppointments();
                     break;
                 case 4:
+                    viewAppointments();
                     deleteAppointment();
+                    viewAppointments();
                     break;
                 case 5:
                     return;
