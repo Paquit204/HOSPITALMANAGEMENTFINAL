@@ -6,10 +6,10 @@ public class HospitalAppointmentSystem {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        PatientManager patientManager = new PatientManager();
-        AppointmentManager appointmentManager = new AppointmentManager();
-        DoctorManager doctorManager = new DoctorManager();
-        ReportsManager reportsManager = new ReportsManager();
+        Patient patientManager = new Patient();
+        Appointment appointmentManager = new Appointment();
+        Doctor doctorManager = new Doctor();
+        Reports reportsManager = new Reports();
 
         while (true) {
             System.out.println("\n======================== Hospital Appointment System ========================");
@@ -26,16 +26,16 @@ public class HospitalAppointmentSystem {
 
             switch (choice) {
                 case 1:
-                    patientManager.managePatients();
+                    patientManager.Patients();
                     break;
                 case 2:
-                    appointmentManager.manageAppointments();
+                    appointmentManager.Appointment();
                     break;
                 case 3:
-                    doctorManager.manageDoctors();
+                    doctorManager.Doctors();
                     break;
                 case 4:
-                    reportsManager.manageReports();
+                    reportsManager.Reports();
                     break;
                 case 5:
                     System.out.println("                  SALAMAT SA TANAN                  ");

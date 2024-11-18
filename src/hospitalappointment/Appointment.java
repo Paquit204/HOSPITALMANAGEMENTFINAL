@@ -2,11 +2,11 @@ package hospitalappointment;
 
 import java.util.Scanner;
 
-public class AppointmentManager {
+public class Appointment {
     private static final config dbConfig = new config();
     private static Scanner scanner = new Scanner(System.in);
 
-    public static void manageAppointments() {
+    public static void Appointment() {
         while (true) {
             displayMenu();
             int choice = getValidIntegerInput(); 
@@ -49,11 +49,11 @@ public class AppointmentManager {
 
    private static void addAppointment() {
    
-    PatientManager.viewPatients();  
+    Patient.viewPatients();  
     int patientId = getValidPatientId();  
 
     
-    DoctorManager.viewDoctors();  
+    Doctor.viewDoctors();  
     int doctorId = getValidDoctorId();  
 
     
@@ -83,7 +83,7 @@ public class AppointmentManager {
             if (dbConfig.isPatientIdValid(patientId)) {
                 break; 
             }
-            System.out.println("Patient ID not found. Please enter a valid patient ID.");
+            System.out.println("taka rakag tuslok sa I'd basaha pud. usba .");
         }
         return patientId;
     }
@@ -96,7 +96,7 @@ public class AppointmentManager {
             if (dbConfig.isDoctorIdValid(doctorId)) {
                 break; 
             }
-            System.out.println("Doctor ID not found. Please enter a valid doctor ID.");
+            System.out.println("basahag tarong . Please enter a valid doctor ID.");
         }
         return doctorId;
     }
@@ -122,7 +122,6 @@ public class AppointmentManager {
             return;
         }
 
-        scanner.nextLine(); 
         System.out.print("Enter new appointment date (YYYY-MM-DD): ");
         String appointmentDate = scanner.nextLine();
         System.out.print("Enter new appointment type: ");

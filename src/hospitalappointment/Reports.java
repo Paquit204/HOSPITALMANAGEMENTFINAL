@@ -2,11 +2,11 @@ package hospitalappointment;
 
 import java.util.Scanner;
 
-public class ReportsManager {
+public class Reports {
     private static final config dbConfig = new config();
     private static Scanner scanner = new Scanner(System.in);
 
-    public void manageReports() {
+    public void Reports() {
         while (true) {
             System.out.println("\n================================== Reports ===================================");
             System.out.println("1. All Patient History");
@@ -60,7 +60,7 @@ public class ReportsManager {
     }
 
     private void individualPatientReport() {
-         PatientManager.viewPatients();  
+         Patient.viewPatients();  
     System.out.print("Enter patient ID for report: ");
     int patientId = getValidIntegerInput(); 
 
@@ -80,7 +80,7 @@ public class ReportsManager {
 }
 
     private void individualAppointmentReport() {
-        DoctorManager.viewDoctors(); 
+        Doctor.viewDoctors(); 
         System.out.print("Enter appointment ID for report: ");
         int appointmentId = getValidIntegerInput(); 
         String sql = "SELECT a.id, p.name AS patient_name, d.name AS doctor_name, a.appointment_date, a.appointment_type, a.status " +

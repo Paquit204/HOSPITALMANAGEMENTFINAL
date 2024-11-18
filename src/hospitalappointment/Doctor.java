@@ -2,11 +2,11 @@ package hospitalappointment;
 
 import java.util.Scanner;
 
-public class DoctorManager {
+public class Doctor {
     private static final config dbConfig = new config();
     private static Scanner scanner = new Scanner(System.in);
 
-    public void manageDoctors() {
+    public void Doctors() {
         while (true) {
             System.out.println("\n=================================== Manage Doctors ===========================================");
             System.out.println("1. Add Doctor");
