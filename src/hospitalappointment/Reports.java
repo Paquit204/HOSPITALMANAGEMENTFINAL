@@ -8,13 +8,13 @@ public class Reports {
 
     public void Reports() {
         while (true) {
-            System.out.println("\n================================== Reports ===================================");
-            System.out.println("1. All Patient History");
-            System.out.println("2. Appointment History");
-            System.out.println("3. Individual Patient Report");
-            System.out.println("4. Individual Appointment Report");
-            System.out.println("5. Back");
-            System.out.println("\n==============================================================================");
+            System.out.println("\n   ================================== --Reports-- ===================================");
+            System.out.println("    //                     |        1. All Patient History                |         // ");
+            System.out.println("   //                      |        2. Appointment History                |        //  ");
+            System.out.println("  //                       |        3. Individual Patient Report          |       //   ");
+            System.out.println(" //                        |        4. Individual Appointment Report      |      //    ");
+            System.out.println("//                         |        5. Back                               |     //     ");
+            System.out.println("=================================================================================      ");
             System.out.print("Choose a report option: ");
             int choice = getValidIntegerInput(); 
             

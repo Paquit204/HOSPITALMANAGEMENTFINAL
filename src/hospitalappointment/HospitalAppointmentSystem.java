@@ -12,16 +12,16 @@ public class HospitalAppointmentSystem {
         Reports reportsManager = new Reports();
 
         while (true) {
-            System.out.println("\n======================== Hospital Appointment System ========================");
-            System.out.println("                                                                               ");
-            System.out.println("                                 1.  Patients");
-            System.out.println("                                 2.  Appointments");
-            System.out.println("                                 3.  Doctors");
-            System.out.println("                                 4.  Reports");
-            System.out.println("                                 5.  Exit");
-            System.out.println("                                                                               ");
-              System.out.println("\n====================== Hospital Appointment System ========================");
-            System.out.print ("Pili lng pre: ");
+            System.out.println("=========================== Hospital Appointment System ========================");
+            System.out.println(" ||                                                                         ||");
+            System.out.println(" ||                           //   1.  Patients          //                 ||");
+            System.out.println(" ||                          //    2.  Appointments     //                  ||");
+            System.out.println(" ||                         //     3.  Doctors         //                   ||");
+            System.out.println(" ||                        //      4.  Reports        //                    ||");
+            System.out.println(" ||                       //       5.  Exit          //                     ||");
+            System.out.println(" ||                      //                         //                      ||");
+              System.out.println("======================== ----------------------------- ========================");
+            System.out.print ("Pili lng kol: ");
             int choice = getValidIntegerInput();
 
             switch (choice) {

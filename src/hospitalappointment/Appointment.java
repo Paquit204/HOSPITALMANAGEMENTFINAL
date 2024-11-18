@@ -37,13 +37,13 @@ public class Appointment {
     }
 
     private static void displayMenu() {
-        System.out.println("\n================================ Manage Appointments ============================");
-        System.out.println("1. Add Appointment");
-        System.out.println("2. View Appointments");
-        System.out.println("3. Update Appointment");
-        System.out.println("4. Delete Appointment");
-        System.out.println("5. Back");
-        System.out.println("\n===============================================================================");
+        System.out.println("     ============================ ++ Appointments++ ================================");
+        System.out.println("    //                  |       1. Add Appointment        |                     // ");
+        System.out.println("   //                   |       2. View Appointments      |                    //  ");
+        System.out.println("  //                    |       3. Update Appointment     |                   //   ");
+        System.out.println(" //                     |       4. Delete Appointment     |                  //    ");
+        System.out.println("//                      |       5. Back                   |                 //     ");
+        System.out.println("==============================================================================     ");
         System.out.print("Choose an option: ");
     }
 

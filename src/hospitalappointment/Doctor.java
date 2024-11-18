@@ -8,13 +8,13 @@ public class Doctor {
 
     public void Doctors() {
         while (true) {
-            System.out.println("\n=================================== Manage Doctors ===========================================");
-            System.out.println("1. Add Doctor");
-            System.out.println("2. View Doctors");
-            System.out.println("3. Update Doctor");
-            System.out.println("4. Delete Doctor");
-            System.out.println("5. Back");
-              System.out.println("\n============================================================================================");
+            System.out.println("     =================================  ++Doctors++ ===================================");
+            System.out.println("    //                    |         1. Add Doctor          |                       //");
+            System.out.println("   //                     |         2. View Doctors        |                      // ");
+            System.out.println("  //                      |         3. Update Doctor       |                     //  ");
+            System.out.println(" //                       |         4. Delete Doctor       |                    //   ");
+            System.out.println("//                        |         5. Back                |                   //    ");
+              System.out.println("==============================================================================     ");
             System.out.print("Choose an option: ");
             int choice = getValidIntegerInput();
 
