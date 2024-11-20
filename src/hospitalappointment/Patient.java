@@ -1,5 +1,10 @@
 package hospitalappointment;
 
+import static hospitalappointment.config.connectDB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Patient {
@@ -62,20 +67,51 @@ public class Patient {
         dbConfig.viewRecords(sql, headers, columnNames);
     }
 
-    private void updatePatient() {
+   private void updatePatient() {
+    int id;
+    
+    // Loop until a valid patient ID is entered
+    while (true) {
         System.out.print("Enter patient ID to update: ");
-        int id = getValidIntegerInput();
+        id = getValidIntegerInput(); // Assume this method checks for valid integer input
 
-        System.out.print("Enter new patient name: ");
-        String name = scanner.nextLine();
-        System.out.print("Enter new patient age: ");
-        int age = getValidIntegerInput(); 
-        System.out.print("Enter new patient gender: ");
-        String gender = scanner.nextLine();
-
-        String sql = "UPDATE patients SET name = ?, age = ?, gender = ? WHERE id = ?";
-        dbConfig.updateRecord(sql, name, age, gender, id);
+        // Check if the patient ID exists in the database
+        if (patientExists(id)) {
+            break; // Exit the loop if the ID is valid
+        } else {
+            System.out.println("Invalid patient ID. Please enter again.");
+        }
     }
+
+    // Proceed to get new patient details
+    System.out.print("Enter new patient name: ");
+    String name = scanner.nextLine();
+    System.out.print("Enter new patient age: ");
+    int age = getValidIntegerInput(); 
+    System.out.print("Enter new patient gender: ");
+    String gender = scanner.nextLine();
+
+    String sql = "UPDATE patients SET name = ?, age = ?, gender = ? WHERE id = ?";
+    dbConfig.updateRecord(sql, name, age, gender, id);
+    System.out.println("Patient information updated successfully.");
+}
+
+// Method to check if a patient exists
+private boolean patientExists(int id) {
+    String sql = "SELECT COUNT(*) FROM patients WHERE id = ?";
+    try (Connection conn = connectDB();
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        pstmt.setInt(1, id);
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            return rs.getInt(1) > 0; // Return true if count is greater than 0
+        }
+    } catch (SQLException e) {
+        System.err.println("Database error: " + e.getMessage());
+    }
+    return false; // Return false if patient does not exist
+}
+
 
     private void deletePatient() {
         System.out.print("Enter patient ID to delete: ");
