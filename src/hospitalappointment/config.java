@@ -6,13 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 public class config {
    
     public static Connection connectDB() {
         Connection con = null;
         try {
             Class.forName("org.sqlite.JDBC"); 
-            con = DriverManager.getConnection("jdbc:sqlite:paquit.db"); // Establish connection
+            con = DriverManager.getConnection("jdbc:sqlite:paquit.db");
             System.out.println("Connection Successful");
         } catch (Exception e) {
             System.out.println("Connection Failed: " + e);
@@ -36,7 +37,7 @@ public class config {
         }
     }
 
-    // Method to view records from any table
+   
     public void viewRecords(String sqlQuery, String[] columnHeaders, String[] columnNames, Object... values) {
         if (columnHeaders.length != columnNames.length) {
             System.out.println("Error: Mismatch between column headers and column names.");
@@ -112,7 +113,6 @@ public class config {
         }
     }
 
-    // Method to delete a record from the database
     public void deleteRecord(String sql, Object... values) {
         try (Connection conn = connectDB();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -132,7 +132,6 @@ public class config {
         }
     }
 
-    // Method to retrieve the current status of an appointment
     public String getCurrentStatus(int appointmentId) {
         String status = null;
         String sql = "SELECT status FROM appointments WHERE id = ?";
@@ -150,17 +149,17 @@ public class config {
         }
         return status;
     }
-        // Method to check if a patient ID exists
+
     public boolean isPatientIdValid(int patientId) {
         return isIdValid("patients", patientId);
     }
 
-    // Method to check if a doctor ID exists
+
     public boolean isDoctorIdValid(int doctorId) {
         return isIdValid("doctors", doctorId);
     }
 
-    // General method to check ID validity
+
     private boolean isIdValid(String tableName, int id) {
         String sql = "SELECT COUNT(*) FROM " + tableName + " WHERE id = ?";
         try (Connection conn = connectDB(); 
@@ -171,7 +170,31 @@ public class config {
         } catch (SQLException e) {
             System.out.println("Error checking ID validity: " + e.getMessage());
         }
-        return false; // In case of an error or no record found
+        return false;
     }
 
+    void viewRecord(String sql, String[] columnHeaders, String[] columnNames, Object... values) {
+    try (Connection conn = connectDB();
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+        // Set values for prepared statement if any
+        for (int i = 0; i < values.length; i++) {
+            pstmt.setObject(i + 1, values[i]);
+        }
+
+        try (ResultSet rs = pstmt.executeQuery()) {
+            if (rs.next()) {
+                StringBuilder result = new StringBuilder();
+                for (String colName : columnNames) {
+                    String value = rs.getString(colName);
+                    result.append(colName).append(": ").append(value != null ? value : "N/A").append("\n");
+                }
+                System.out.println(result.toString());
+            }
+        }
+    } catch (SQLException e) {
+        System.out.println("Error retrieving record: " + e.getMessage());
+    }
+}
+    
 }
